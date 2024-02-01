@@ -13,6 +13,7 @@ int main(){
     for( int i = 0; i < arr.size(); i++ ){
         for( int j = 0; j < brr.size(); j++ ){
             if( arr[i] == brr[j] ){
+                b[j] = -1; // i am marking element of 2 array because in case of Duplicate element it will handle
                 ans.push_back(arr[i]);
             }
         }
