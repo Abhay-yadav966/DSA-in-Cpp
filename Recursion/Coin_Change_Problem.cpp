@@ -33,9 +33,9 @@ void coinChange( vector <int> &arr, int &ans, int &target, vector <int> &temp, i
 
 int main(){
 
-    vector <int> arr = { 1, 2};
+    vector <int> arr = { 1, 2, 5};
     int ans = 0;
-    int target = 10;
+    int target = 11;
     int mini = INT_MAX;
     int i = 0;
 
