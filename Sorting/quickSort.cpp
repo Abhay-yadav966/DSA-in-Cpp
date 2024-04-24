@@ -1,73 +1,74 @@
 #include<iostream>
+#include<vector>
 using namespace std;
 
-int partition( int* arr, int start, int end){
-
-    // cout<<"ABhay"<<endl;
+int pivotElement( vector<int>& arr, int start, int end ){
 
     int pivotIndex = start;
-    int pivotElement = arr[start];
+    int pivotElement = arr[pivotIndex];
 
-    int count = 0;
-    int traverse = start + 1;
+    int i = start + 1;
+    int j = 0;
 
-    while( traverse <= end ){
-        if( arr[pivotIndex] >= arr[start] ){
-            count++;
+
+    while( i <= end ){
+        if( arr[i] <= pivotElement ){
+            j++;
         }
-        start++;
-        cout<<"ABhay"<<endl;
+        i++;
     }
 
-    int rightIndex = start + count;
-    swap(arr[pivotIndex], arr[rightIndex]);
+    int rightIndex = start + j;
+    swap( arr[pivotIndex], arr[rightIndex]);
     pivotIndex = rightIndex;
 
-    int i = start;
-    int j = end;
+    int left = start;
+    int right = end;
 
-    while( i < pivotIndex && j > pivotIndex ){
-        while( arr[pivotIndex] > arr[i] ){
-            i++;
+    while( left < pivotIndex && right > pivotIndex ){
+        if( arr[left] <= pivotElement ){
+            left++;
         }
-        while( arr[pivotIndex] < arr[j] ){
-            j--;
+        else{
+            right++;
         }
     }
 
-    if( i < pivotIndex && j > pivotIndex ){
-        swap( arr[i], arr[j] );
+    if( left < pivotIndex && right > pivotIndex ){
+        swap( arr[left], arr[right]);
     }
-    
+
     return pivotIndex;
+
 }
 
-void quickSort( int* arr, int start , int end){
+void quickSort( vector<int>& arr, int start, int end ){
 
-    if( start >= end ){
+    if( start >= end){
         return;
     }
 
-    int pivot = partition( arr, start, end);
+    int pivot = pivotElement( arr, start, end);
 
-    quickSort( arr, start, pivot-1);
-    quickSort( arr, pivot+1, end);
+    // left call
+    quickSort( arr, start, pivot - 1);
+
+    // right call
+    quickSort( arr, pivot + 1, end);
+
 }
-
 
 int main(){
 
-    int arr[] = { 4, 4, 5, 13, 2, 12 };
-
-    int size = 6;
+    vector <int> arr = { 9, 8, 7, 6, 5, 4, 3, 2, 1};
 
     int start = 0;
-    int end = size - 1;
+    int end = arr.size() - 1;
 
-    quickSort( arr, start , end);
+    quickSort( arr, start, end);
 
-    for( int i = 0; i < size; i++){
-        cout<<arr[i]<<" ";
+    for( auto i:arr){
+        cout<<i<<" ";
     }
 
     return 0;
