@@ -26,11 +26,11 @@ int pivotElement( vector<int>& arr, int start, int end ){
     int right = end;
 
     while( left < pivotIndex && right > pivotIndex ){
-        if( arr[left] <= pivotElement ){
+        while( arr[left] <= pivotElement ){
             left++;
         }
-        else{
-            right++;
+        while( arr[right] >= pivotElement ){
+            right--;
         }
     }
 
