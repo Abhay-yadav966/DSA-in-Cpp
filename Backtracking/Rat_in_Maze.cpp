@@ -60,12 +60,12 @@ int main(){
 
     vector <vector <int>> maze = { { 1, 0, 0}, 
                                   { 1, 1, 0}, 
-                                  { 1, 1, 1}
+                                  { 1, 1, 1},
                                 };
 
     vector < vector <int>> visited = { { 1, 0, 0},
                                        { 0, 0, 0},
-                                       { 0, 0, 0}
+                                       { 0, 0, 0},
                                     };
 
     vector<string> ans;
@@ -84,3 +84,6 @@ int main(){
 
     return 0;
 }
+
+
+
