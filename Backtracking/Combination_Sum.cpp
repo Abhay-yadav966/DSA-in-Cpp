@@ -3,7 +3,7 @@
 #include<algorithm>
 using namespace std;
 
-void solve( vector<int> &arr, int& target, vector<vector<int>>& ans, vector<int>& output, int& sum, int index){
+void solve( vector<int> arr, int& target, vector<vector<int>>& ans, vector<int>& output, int& sum, int index){
 
     // base case
     if( sum == target){
@@ -11,18 +11,20 @@ void solve( vector<int> &arr, int& target, vector<vector<int>>& ans, vector<int>
         return;
     }
 
-    if( sum > target){
+    if( sum > target || index >= arr.size() ){
         return;
     }
 
     // 1 case
-    for( int i = index; i < arr.size(); i++){
-        sum = sum + arr[i];
-        output.push_back(arr[i]);
-        solve( arr, target, ans, output, sum, i);
-        output.pop_back();
-        sum = sum - arr[i];
-    }
+    // include
+    sum = sum + arr[index];
+    output.push_back(arr[index]);
+    solve(arr, target, ans, output, sum, index);
+    output.pop_back();
+    sum = sum - arr[index];
+
+    // exclude
+    solve( arr, target, ans, output, sum, index+1);
 }
 
 int main(){

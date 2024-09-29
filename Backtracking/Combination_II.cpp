@@ -8,7 +8,6 @@ void solve( vector<int>& candidates, int& target, vector<vector <int>>& ans, vec
 
         // base case
         if( sum == target){
-            cout<<"Abhay";
             ans.push_back(output);
             return;
         }
@@ -20,7 +19,6 @@ void solve( vector<int>& candidates, int& target, vector<vector <int>>& ans, vec
         // 1 case
         for( int i = index; i < candidates.size(); i++){
             sum = sum + candidates[i];
-            cout<<sum<<endl;
             output.push_back(candidates[i]);
             solve( candidates, target, ans, output, sum, i + 1);
             output.pop_back();

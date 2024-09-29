@@ -22,7 +22,7 @@ void solve( string& str, vector <string>& ans, int& i){
 
 int main(){
 
-    string str = "abc";
+    string str = "ab";
     vector <string> ans;
 
     int i = 0;
