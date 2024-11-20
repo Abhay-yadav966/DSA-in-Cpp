@@ -4,14 +4,14 @@ using namespace std;
 
 int pivotElement( vector<int>& arr, int start, int end ){
 
-    int pivotIndex = start;
+    int pivotIndex = start;  // for pivot as end  => int pivotIndex = end;
     int pivotElement = arr[pivotIndex];
 
-    int i = start + 1;
+    int i = start + 1; // for pivot as end  => int i = start;
     int j = 0;
 
 
-    while( i <= end ){
+    while( i <= end ){   // for pivot as end => while( i < end )
         if( arr[i] <= pivotElement ){
             j++;
         }
@@ -26,17 +26,17 @@ int pivotElement( vector<int>& arr, int start, int end ){
     int right = end;
 
     while( left < pivotIndex && right > pivotIndex ){
-        while( arr[left] <= pivotElement ){
+        while( arr[left] < pivotElement ){
             left++;
         }
         while( arr[right] >= pivotElement ){
             right--;
         }
+        if( left < pivotIndex && right > pivotIndex ){
+            swap( arr[left], arr[right]);
+        } 
     }
 
-    if( left < pivotIndex && right > pivotIndex ){
-        swap( arr[left], arr[right]);
-    }
 
     return pivotIndex;
 
@@ -60,7 +60,7 @@ void quickSort( vector<int>& arr, int start, int end ){
 
 int main(){
 
-    vector <int> arr = { 9, 8, 7, 6, 5, 4, 3, 2, 1};
+    vector <int> arr = { 5, 3, 7, 8, 2  ,6,7 ,8 ,9};
 
     int start = 0;
     int end = arr.size() - 1;

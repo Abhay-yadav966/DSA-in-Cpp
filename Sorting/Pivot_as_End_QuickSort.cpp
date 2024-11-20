@@ -57,7 +57,7 @@ void quickSort( vector <int>& arr, int start, int end){
 
 int main(){
 
-    vector <int> arr = { 9, 8, 7, 6, 5, 4, 3, 2, 1};
+    vector <int> arr = { 5, 3, 7, 8, 2  ,6,7 ,8 ,9};
 
     int start = 0;
     int end = arr.size() - 1;
