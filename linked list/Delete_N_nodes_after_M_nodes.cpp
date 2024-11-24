@@ -24,6 +24,43 @@ void printList(Node* head){
     }
 }
 
+void helper(Node* head, int m, int n){
+
+    if(head == NULL){
+        return;
+    }
+
+    if(head->next == NULL){
+        return;
+    }
+
+    Node* temp = head;
+    int i = 1;
+    while(i <= m-1){
+        if(temp == NULL){
+            return;
+        }
+        temp = temp->next;
+        i++;
+    }
+
+    Node* newNode = temp->next;
+    i = 1;
+
+    while(i <= n){
+        if(newNode == NULL){
+            temp->next = newNode;
+            return;
+        }
+        newNode = newNode->next;
+        i++;
+    }
+
+    temp->next= newNode;
+    helper(newNode, m, n);
+    return;
+}
+
 int main(){
 
     Node* head = new Node(9);
@@ -33,7 +70,7 @@ int main(){
     Node* four = new Node(9);
     Node* five = new Node(4);
     Node* six = new Node(10);
-    Node* seven = new Node(1);
+    Node* seven = new Node(2);
 
     head->next = first;
     first->next = second;
@@ -47,25 +84,10 @@ int main(){
     printList(head);
     cout<<endl;
 
-    int m = 6;
-    int n = 1;
+    int m = 2;
+    int n = 2;
 
-    Node* temp = head;
-    int i = 1;
-    while(i <= m-1){
-        temp = temp->next;
-        i++;
-    }
-
-    Node* newNode = temp->next;
-    i = 1;
-
-    while(i <= n){
-        newNode = newNode->next;
-        i++;
-    }
-
-    temp->next= newNode;
+    helper(head, m, n);
 
     cout<<"After Removing : "<<endl;
     printList(head);
