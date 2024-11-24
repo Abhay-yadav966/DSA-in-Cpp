@@ -53,7 +53,7 @@ int main(){
     Stack* s = new Stack(3);
     s->push(10);
     s->push(20);
-    s->push(30);
+    // s->push(30);
 
     cout<<"Stack is empty : "<<s->empty()<<endl;
     cout<<"Size of Stack : "<<s->Size()<<endl;
