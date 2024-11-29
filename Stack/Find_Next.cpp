@@ -4,14 +4,14 @@
 using namespace std;
 
 int main(){
-    vector <int> arr = {4, 8, 1, 2, 25};
+    vector <int> arr = {4, 8, 5, 2, 25};
     vector <int> ans(arr.size());
-    int mini = INT_MAX;
+    int mini = arr[arr.size()-1];
 
     for(int i = arr.size() - 1; i >= 0; i--){
-        if(mini > arr[i]){
-            ans[i] = arr[i];
-            mini = arr[i];
+        if(mini > arr[i+1]){
+            mini = arr[i+1];
+            ans[i] = mini;
         }else{
             ans[i] = mini;
         }
