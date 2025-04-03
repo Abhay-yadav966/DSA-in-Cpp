@@ -21,6 +21,7 @@ int main(){
 
     for( int i = 0; i < arr.size(); i++ ){
         ans = ans ^ arr[i];
+        cout<<"the value of ans : "<<ans<<endl;
     }
 
     cout<<"The unique element is "<<ans;
