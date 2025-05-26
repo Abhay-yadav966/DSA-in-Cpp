@@ -37,24 +37,21 @@ Node* buildTree(){
     return root;
 }
 
-pair<bool, int> checkTreeIsHeap(Node* root, bool& ans){
+Node* checkTreeIsHeap(Node* root, bool& ans){
     if(root == NULL){
-        return make_pair(true, INT_MIN);
+        return NULL;
     }
 
-    if(root->left == NULL && root->right == NULL){
-        return make_pair(true, root->data);
-    }
+    Node* left = checkTreeIsHeap(root->left, ans);
+    Node* right = checkTreeIsHeap(root->right, ans);
 
-    pair<bool, int> left = checkTreeIsHeap(root->left, ans);
-    pair<bool, int> right = checkTreeIsHeap(root->right, ans);
-
-    if(left.first == true && right.first == true && (left.second > root->data || right.second > root->data )){
+    if(left != NULL && right != NULL && (left->data > root->data || right->data > root->data )){
         ans = false;
-        return make_pair(false, root->data);
+    }else if(left != NULL && right == NULL && left->data > root->data){
+        ans = false;
     }
 
-    return make_pair(true, root->data);
+    return root;
 }
 
 int main(){
